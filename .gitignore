@@ -11,7 +11,7 @@
 # ==============================================================================
 # Ignoruje stavový soubor démona awww (mění se při každé rotaci tapety)
 **/awww/wallpaper-state
-
+**/hyprlock/current-wallpaper
 
 # ==============================================================================
 #  BACKUPS & TEMPORARY FILES
