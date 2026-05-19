@@ -1,138 +1,77 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# ==============================================================================
+#  POWERLEVEL10K INSTANT PROMPT (Musí zůstat úplně nahoře)
+# ==============================================================================
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your Oh My Zsh installation.
+# ==============================================================================
+#  OH MY ZSH & THEME CONFIGURATION
+# ==============================================================================
+
+# Cesta k Oh My Zsh instalaci
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# Aktivace tématu Powerlevel10k
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(extract git sudo archlinux zsh-autosuggestions zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
-
-# Zsh syntax highlighting colors - override after plugin loads
-declare -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES=(
-    'function'                   'fg=#00AFFF,bold'
-    'command'                    'fg=#00AFFF'
-    'alias'                      'fg=#00AFFF'
-    'builtin'                    'fg=#00AFFF'
-    'suffix-alias'               'fg=#00AFFF'
-    'precommand'                 'fg=#00AFFF'
-    'hashed'                     'fg=#00AFFF'
-    'invalid'                    'fg=#C50B09'
-    'unknown-token'               'fg=#C50B09'
-    'reserved-word'              'fg=#00AFFF,standout'
+# Aktivní pluginy
+plugins=(
+    extract 
+    git 
+    sudo 
+    archlinux 
+    zsh-autosuggestions 
+    zsh-syntax-highlighting
 )
 
-# User configuration
+# Inicializace Oh My Zsh
+source $ZSH/oh-my-zsh.sh
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
-
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# Načtení uživatelské konfigurace Powerlevel10k
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# OpenCode MCP environment variables
-export WP_SITES_PATH="/home/kersonik/.config/opencode/wp-sites.json"
-export PATH="$HOME/.local/bin:$PATH"
-QT_QPA_PLATFORMTHEME=kvantum
 
+# ==============================================================================
+#  ENVIRONMENT VARIABLES
+# ==============================================================================
+
+export EDITOR='micro'
+export QT_QPA_PLATFORMTHEME='kvantum'
+export WP_SITES_PATH="/home/kersonik/.config/opencode/wp-sites.json"
+
+# Rozšíření PATH o tvůj lokální bin
+export PATH="$HOME/.local/bin:$PATH"
+
+
+# ==============================================================================
+#  ZSH SYNTAX HIGHLIGHTING STYLES
+# ==============================================================================
+
+declare -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES=(
+    'function'        'fg=#00AFFF,bold'
+    'command'         'fg=#00AFFF'
+    'alias'           'fg=#00AFFF'
+    'builtin'         'fg=#00AFFF'
+    'suffix-alias'    'fg=#00AFFF'
+    'precommand'      'fg=#00AFFF'
+    'hashed'          'fg=#00AFFF'
+    'invalid'         'fg=#C50B09'
+    'unknown-token'   'fg=#C50B09'
+    'reserved-word'   'fg=#00AFFF,standout'
+)
+
+
+# ==============================================================================
+#  ALIASES & CUSTOM FUNCTIONS
+# ==============================================================================
+
+# Tvůj nový týdenní čistící skript
+alias clean='~/system-clean.sh'
+
+# Zenmap root wrapper (X11 předávání pro sudo)
 function gsudo_zenmap() {
     xhost +si:localuser:root > /dev/null
     sudo zenmap "$@"
@@ -140,12 +79,11 @@ function gsudo_zenmap() {
 }
 alias zenmap='gsudo_zenmap'
 
+# Chytrá funkce ls (pokud dostane existující soubor, rovnou ho catne)
 unalias ls 2>/dev/null
 ls() {
-    # Získá poslední zadaný argument
     local last_arg="${@: -1}"
     
-    # Pokud existuje argument a poslední argument je existující soubor
     if [ $# -gt 0 ] && [ -f "$last_arg" ]; then
         cat "$last_arg"
     else

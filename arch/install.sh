@@ -35,12 +35,12 @@ echo -e "${GREEN}Installing ZSH Theme & Plugins...${NC}"
 [ ! -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ] && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
 # 4. Wallpapers download
-echo -e "${GREEN}Syncing Wallpapers...${NC}"
-if [ ! -d "$HOME/Pictures/wallpapers/.git" ]; then
-    rm -rf ~/Pictures/wallpapers
-    mkdir -p ~/Pictures/wallpapers
-    git clone https://github.com/kersonik/wallpapers.git ~/Pictures/wallpapers
-fi
+#echo -e "${GREEN}Syncing Wallpapers...${NC}"
+#if [ ! -d "$HOME/Pictures/wallpapers/.git" ]; then
+#    rm -rf ~/Pictures/wallpapers
+#    mkdir -p ~/Pictures/wallpapers
+#    git clone https://github.com/kersonik/wallpapers.git ~/Pictures/wallpapers
+#fi
 
 # 5. Backup (Interactive)
 echo -ne "${YELLOW}Do you want to backup current config to ~/config-backup? [y/N]: ${NC}"
