@@ -1,3 +1,32 @@
-node_modules/
-arch/hyprlock/.config/hyprlock/current-wallpaper
-arch/awww/.config/awww/wallpaper-state
+# ==============================================================================
+#  NCSPOT & MUSICAL BALAST
+# ==============================================================================
+# Ignoruje dynamický binární stav Spotify klienta (hudební fronta, cache, tokeny)
+**/ncspot/userstate.cbor
+**/ncspot/*.cbor
+
+
+# ==============================================================================
+#  WALLPAPER AUTOMATION STATE
+# ==============================================================================
+# Ignoruje stavový soubor démona awww (mění se při každé rotaci tapety)
+**/awww/wallpaper-state
+
+
+# ==============================================================================
+#  BACKUPS & TEMPORARY FILES
+# ==============================================================================
+# Ignoruje záložní konfigurační soubory, které ti tam vznikají ručně nebo skripty
+*.bak
+*.bak[0-9]
+*.tmp
+*~
+
+
+# ==============================================================================
+#  SYSTEM & IDE BALAST (Volitelné, ale doporučené)
+# ==============================================================================
+# Pokud bys někdy složku otevřel ve VS Code nebo tam Python vytvořil cache
+.vscode/
+__pycache__/
+*.log
