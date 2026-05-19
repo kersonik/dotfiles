@@ -69,7 +69,7 @@ ZSH_HIGHLIGHT_STYLES=(
 # ==============================================================================
 
 # Tvůj nový týdenní čistící skript
-alias clean='~/system-clean.sh'
+alias clean='~/bordel/cleaner/sys-clean.sh'
 
 # Zenmap root wrapper (X11 předávání pro sudo)
 function gsudo_zenmap() {
