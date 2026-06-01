@@ -71,7 +71,8 @@ ZSH_HIGHLIGHT_STYLES=(
 # Tvůj nový týdenní čistící skript
 alias clean='~/bordel/cleaner/sys-clean.sh'
 
-# Zenmap root wrapper (X11 předávání pro sudo)
+# Funkce pro sluzby s rootem a display serverem
+
 function gsudo_zenmap() {
     xhost +si:localuser:root > /dev/null
     sudo zenmap "$@"
@@ -79,6 +80,12 @@ function gsudo_zenmap() {
 }
 alias zenmap='gsudo_zenmap'
 
+function gsudo_better-control() {
+    xhost +si:localuser:root > /dev/null
+    sudo better-control "$@"
+    xhost -si:localuser:root > /dev/null
+}
+alias better-control='gsudo_better-control'
 # Chytrá funkce ls (pokud dostane existující soubor, rovnou ho catne)
 unalias ls 2>/dev/null
 ls() {

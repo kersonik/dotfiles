@@ -4,9 +4,21 @@
         "reload_style_on_change": true,
         "modules-left": ["clock", "custom/separator", "custom/notification"],
         "modules-center": ["hyprland/workspaces"],
-        "modules-right": ["backlight", "custom/separator", "pulseaudio", "custom/separator", "bluetooth", "custom/separator", "network"],
+        "modules-right": ["battery", "custom/separator", "backlight", "custom/separator", "pulseaudio", "custom/separator", "bluetooth", "custom/separator", "network"],
 
-
+		"battery": {
+		    "bat": "BAT0",
+		    "interval": 60,
+		    "states": {
+		        "warning": 30,
+		        "critical": 15
+		    },
+		    "format": "{capacity} % {icon}",
+		    "format-charging": "{capacity}% ⚡",
+		    "format-plugged": "{capacity}% ",
+		    "format-icons": ["", "", "", "", ""]
+		},
+		
         "hyprland/workspaces": {
             "format": "{icon}",
             "format-icons": {
@@ -63,7 +75,6 @@
         },
         "backlight": {
             "format": "{percent}% 󰌢",
-            "format-alt": "{percent}%"
         },
         "pulseaudio": {
             "format": "{volume}% 󰕾",
