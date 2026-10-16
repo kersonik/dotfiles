@@ -71,43 +71,15 @@ ZSH_HIGHLIGHT_STYLES=(
 # Tvůj nový týdenní čistící skript
 alias clean='~/bordel/cleaner/sys-clean.sh'
 
-# VPN school routes
+# VPN school routes — tenký wrapper nad kanonickým skriptem
+# (viz arch/vpn-routes/.local/bin/vpn-routes.sh)
 function vpn-routes() {
-    echo "🔧 Nastavuji VPN routing pro školní síť..."
-    
-    local VPN_GW="10.100.105.1"
-    local VPN_IF="tun0"
-    
-    if ! ip link show "$VPN_IF" 2>/dev/null | grep -q "UP"; then
-        echo "❌ $VPN_IF není aktivní"
+    local script="$HOME/.local/bin/vpn-routes.sh"
+    if [[ ! -x "$script" ]]; then
+        echo "❌ Nenalezen spustitelný $script" >&2
         return 1
     fi
-    
-    # Školní IP adresy
-    local SCHOOL_IPS=(
-        "192.168.22.0/24"
-        "10.55.10.0/24"
-        "10.55.100.0/24"
-        "10.55.101.0/24"
-        "10.55.200.0/24"
-        "10.56.10.0/24"
-        "10.50.50.0/24"
-        "10.100.100.0/24"
-    )
-    
-    # Přidej routes (vyžaduje sudo)
-    for route in "${SCHOOL_IPS[@]}"; do
-        if sudo ip route add "$route" via "$VPN_GW" dev "$VPN_IF" metric 50 2>/dev/null; then
-            echo "✅ Route přidán: $route"
-        else
-            echo "ℹ Route již existuje (nebo není potřeba přidávat): $route"
-        fi
-    done
-    
-    echo "✅ VPN routing nastaveno!"
-    echo ""
-    echo "📋 Aktuální routes:"
-    ip route | grep "$VPN_GW"
+    "$script" "${1:-up}"
 }
 
 # Funkce pro sluzby s rootem a display serverem
