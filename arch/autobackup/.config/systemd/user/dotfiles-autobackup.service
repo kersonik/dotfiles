@@ -1,0 +1,6 @@
+[Unit]
+Description=Zaloha dotfiles na GitHub
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/dotfiles-autobackup.sh

@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodicka zaloha dotfiles na GitHub (kazdou hodinu)
+
+[Timer]
+OnBootSec=10min
+OnCalendar=hourly
+Persistent=true
+Unit=dotfiles-autobackup.service
+
+[Install]
+WantedBy=timers.target
