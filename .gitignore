@@ -33,6 +33,8 @@ __pycache__/
 
 
 # ==============================================================================
-#  VPN ROUTES (obsahuje citlive udaje - zustava lokalne)
+#  VPN ROUTES
 # ==============================================================================
-vpn-routes/
+# Dříve ignorováno kvůli heslu v komentáři. To je odstraněno, takže
+# arch/vpn-routes/ se nyní zálohuje do repa (žádné citlivé údaje).
+

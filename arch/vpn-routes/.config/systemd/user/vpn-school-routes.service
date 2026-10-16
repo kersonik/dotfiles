@@ -1,0 +1,12 @@
+[Unit]
+Description=Setup routing for OpenVPN school network (tun0)
+After=network.target
+PartOf=openvpn-client@443.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/kersonik/.local/bin/vpn-routes.sh up
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target

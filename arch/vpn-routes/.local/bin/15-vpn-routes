@@ -1,0 +1,25 @@
+#!/bin/bash
+# NetworkManager dispatcher hook pro školní VPN routing.
+#
+# Instalace (vyžaduje root):
+#   sudo install -m 755 ~/.local/bin/15-vpn-routes /etc/NetworkManager/dispatcher.d/15-vpn-routes
+#
+# NetworkManager spouští tento hook jako root, takže kanonický skript
+# nepotřebuje sudo. Veškerou logiku drží ~/.local/bin/vpn-routes.sh.
+
+INTERFACE="$1"
+ACTION="$2"
+
+# Reagujeme jen na VPN rozhraní.
+[[ "$INTERFACE" == "tun0" ]] || exit 0
+
+VPN_ROUTES="/home/kersonik/.local/bin/vpn-routes.sh"
+
+case "$ACTION" in
+    up|vpn-up)
+        [[ -x "$VPN_ROUTES" ]] && "$VPN_ROUTES" up
+        ;;
+    down|vpn-down)
+        [[ -x "$VPN_ROUTES" ]] && "$VPN_ROUTES" down
+        ;;
+esac
