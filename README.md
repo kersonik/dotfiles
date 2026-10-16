@@ -28,11 +28,13 @@ Configurations are cleanly organized by package inside the `arch/` directory. Th
 │   └── ...
 ├── arch/                  # Source configurations divided by application
 │   ├── awww/              # Wallpaper daemon states
+│   ├── autobackup/        # Hourly auto-commit/push backup of this repo (systemd --user timer)
 │   ├── hypr/              # Main Hyprland and workspace setup
 │   ├── hyprlock/          # Lockscreen layouts, appearance, and indicator scripts
 │   ├── kitty/             # Terminal profiles and font settings
 │   ├── ncspot/            # Terminal Spotify configuration
 │   ├── swaync/            # Notification Center styles and refresh tools
+│   ├── vpn-routes/        # Static routes for the school VPN (single canonical script + NM hook)
 │   ├── waybar/            # Waybar modules and themes (default, line, zen, experimental)
 │   ├── wofi/              # Application launcher styling and dynamic menus
 │   └── zsh/               # Comprehensive .zshrc and Powerlevel10k definitions
@@ -81,6 +83,15 @@ Quickly swap out status bar configurations using the internal `select.sh` contro
 *   **line** - Sleek, low-profile linear status panel.
 *   **zen** - Focused distraction-free workspace mode.
 *   **experimental** - Development environment containing upcoming custom modules.
+
+### School VPN Routing (`arch/vpn-routes`)
+A single canonical script (`~/.local/bin/vpn-routes.sh`, `up`/`down`) adds/removes the static routes for the school network over the OpenVPN `tun0` interface. All entry points delegate to it, so the route list lives in exactly one place:
+*   Shell: the `vpn-routes` zsh function.
+*   Desktop: the `~/.local/bin/15-vpn-routes` NetworkManager dispatcher hook (runs as root on VPN up/down).
+*   systemd: `vpn-school-routes.service` (user unit).
+
+### Automatic Backup (`arch/autobackup`)
+`dotfiles-autobackup.sh` runs hourly via a systemd `--user` timer, commits any real changes with an `auto: záloha` message and pushes them to GitHub. It never creates empty commits.
 
 ## Security & Git Best Practices
 
