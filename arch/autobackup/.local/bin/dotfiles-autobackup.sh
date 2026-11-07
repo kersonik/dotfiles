@@ -10,7 +10,8 @@ set -euo pipefail
 export PATH="/usr/local/bin:/usr/bin:/bin"
 export GIT_TERMINAL_PROMPT=0
 
-REPO="$HOME/dotfiles"
+REPO="$HOME/github/dotfiles"
+[[ -d "$REPO" ]] || REPO="$HOME/dotfiles"
 cd "$REPO" || { echo "Chyba: $REPO neexistuje"; exit 1; }
 
 # Během rebase/merge nezasahovat.
