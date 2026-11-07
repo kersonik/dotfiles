@@ -32,8 +32,8 @@ window,
 blankwindow,
 notificationwindow,
 .blank-window {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: transparent;
+  background-color: transparent;
 }
 
 .notification-row,
@@ -41,8 +41,8 @@ notificationwindow,
 .notification-content,
 .control-center-list,
 .floating-notifications {
-  background: transparent !important;
-  background-color: transparent !important;
+  background: transparent;
+  background-color: transparent;
   outline: none;
 }
 
