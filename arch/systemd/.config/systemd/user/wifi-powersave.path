@@ -1,0 +1,8 @@
+[Unit]
+Description=Monitor wlo1 for connectivity changes
+
+[Path]
+PathChanged=/sys/class/net/wlo1/operstate
+
+[Install]
+WantedBy=default.target

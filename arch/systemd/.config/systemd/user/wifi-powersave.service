@@ -1,0 +1,9 @@
+[Unit]
+Description=Disable WiFi power saving on wlo1
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/iw dev wlo1 set power_save off
+
+[Install]
+WantedBy=multi-user.target

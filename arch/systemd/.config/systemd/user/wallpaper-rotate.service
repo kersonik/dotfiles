@@ -1,0 +1,9 @@
+[Unit]
+Description=Rotate Wallpapers
+
+[Service]
+Type=oneshot
+ExecStart=/home/kersonik/.config/hypr/wallpaper-rotate.sh
+
+[Install]
+WantedBy=multi-user.target

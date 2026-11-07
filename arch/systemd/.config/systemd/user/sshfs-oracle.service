@@ -1,0 +1,13 @@
+[Unit]
+Description=SSHFS mount Oracle to /mnt/oracle
+After=tailscaled.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/sshfs ubuntu@ubuntu:/ /mnt/oracle -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3
+ExecStop=/usr/bin/fusermount3 -u /mnt/oracle
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
