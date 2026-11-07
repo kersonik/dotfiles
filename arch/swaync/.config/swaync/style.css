@@ -51,8 +51,8 @@ notificationwindow,
    ============================================================ */
 .control-center {
   background-color: @base;
-  border: 1px solid @surface1;
-  border-radius: 14px;
+  border: 2px solid @surface1;
+  border-radius: 10px;
   padding: 14px;
   color: @text;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
