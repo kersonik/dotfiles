@@ -2,9 +2,9 @@
         "layer": "top",
         "position": "top",
         "reload_style_on_change": true,
-        "modules-left": ["clock"],
+        "modules-left": ["clock", "custom/separator", "custom/notification"],
         "modules-center": ["hyprland/workspaces"],
-        "modules-right": ["battery", "custom/separator", "backlight", "custom/separator", "pulseaudio", "custom/separator", "bluetooth", "custom/separator", "network", "custom/separator", "custom/notification"],
+        "modules-right": ["battery", "custom/separator", "backlight", "custom/separator", "pulseaudio", "custom/separator", "bluetooth", "custom/separator", "network"],
 
 		"battery": {
 		    "bat": "BAT0",
