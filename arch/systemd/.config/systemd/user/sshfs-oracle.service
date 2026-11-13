@@ -4,6 +4,7 @@ After=tailscaled.service
 
 [Service]
 Type=forking
+ExecStartPre=/usr/bin/bash -c 'for i in {1..30}; do ping -c1 -W1 100.108.225.70 &>/dev/null && exit 0; sleep 1; done; echo "Tailscale oracle host not reachable" >&2; exit 1'
 ExecStart=/usr/bin/sshfs ubuntu@ubuntu:/ /mnt/oracle -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3
 ExecStop=/usr/bin/fusermount3 -u /mnt/oracle
 Restart=on-failure

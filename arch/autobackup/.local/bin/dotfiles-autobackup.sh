@@ -39,8 +39,13 @@ git commit -q -m "auto: záloha ($HOST) $(date '+%Y-%m-%d %H:%M')"
 # Push; při odmítnutí (nové commity na remote) zkus rebase a znovu.
 if ! git push -q 2>/dev/null; then
     if git pull --rebase --autostash -q 2>/dev/null; then
-        git push -q || { echo "Push selhal (síť?) — commit zůstává lokálně."; exit 1; }
+        git push -q || { 
+            notify-send -u critical "Dotfiles Auto-Backup" "Push selhal (síť?) — commit zůstává lokálně." 2>/dev/null || true
+            echo "Push selhal (síť?) — commit zůstává lokálně."; 
+            exit 1; 
+        }
     else
+        notify-send -u critical "Dotfiles Auto-Backup" "Rebase selhal — vyřeš konflikt v ~/github/dotfiles" 2>/dev/null || true
         echo "Rebase selhal — commit zůstává lokálně."
         exit 1
     fi
