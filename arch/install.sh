@@ -47,19 +47,22 @@ if [ ! -d "$HOME/Pictures/wallpapers/.git" ]; then
     git clone https://github.com/kersonik/wallpapers.git "$HOME/Pictures/wallpapers"
 fi
 
-# 6. Backup (Interactive)
-read -r -p "${YELLOW}Do you want to backup current config to \$HOME/config-backup? [y/N]: ${NC}" backup_choice
-if [[ "$backup_choice" =~ ^[Yy]$ ]]; then
-    echo -e "${GREEN}Backing up...${NC}"
-    mkdir -p "$HOME/config-backup/.config"
-    for app in hypr hyprlock kitty waybar wofi swaync awww ncspot; do
-        [ -d "$HOME/.config/$app" ] && [ ! -L "$HOME/.config/$app" ] && cp -r "$HOME/.config/$app" "$HOME/config-backup/.config/"
-    done
-    [ -f "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ] && cp "$HOME/.zshrc" "$HOME/config-backup/"
-    [ -f "$HOME/.p10k.zsh" ] && [ ! -L "$HOME/.p10k.zsh" ] && cp "$HOME/.p10k.zsh" "$HOME/config-backup/"
-fi
+# 6. Automatic Safety Backup
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+BACKUP_DIR="$HOME/config-backup-$TIMESTAMP"
+echo -e "${GREEN}Creating safety backup in $BACKUP_DIR...${NC}"
+mkdir -p "$BACKUP_DIR/.config"
 
-# 7. Aggressive cleanup
+for app in hypr hyprlock kitty waybar wofi swaync awww ncspot; do
+    if [ -e "$HOME/.config/$app" ] && [ ! -L "$HOME/.config/$app" ]; then
+        cp -r "$HOME/.config/$app" "$BACKUP_DIR/.config/"
+    fi
+done
+[ -e "$HOME/.zshrc" ] && [ ! -L "$HOME/.zshrc" ] && cp "$HOME/.zshrc" "$BACKUP_DIR/"
+[ -e "$HOME/.p10k.zsh" ] && [ ! -L "$HOME/.p10k.zsh" ] && cp "$HOME/.p10k.zsh" "$BACKUP_DIR/"
+echo -e "${GREEN}Backup completed.${NC}"
+
+# 7. Safe cleanup of old configs & dead symlinks
 echo -e "${GREEN}Cleaning old configurations and symlinks...${NC}"
 rm -rf "$HOME/.config/hypr" "$HOME/.config/hyprlock" "$HOME/.config/kitty" "$HOME/.config/waybar" "$HOME/.config/wofi" "$HOME/.config/swaync" "$HOME/.config/awww" "$HOME/.config/ncspot" "$HOME/.zshrc" "$HOME/.p10k.zsh"
 for app in awww hypr hyprlock kitty ncspot swaync waybar wofi; do

@@ -53,15 +53,30 @@ git clone [https://github.com/kersonik/dotfiles.git](https://github.com/kersonik
 cd ~/dotfiles
 ```
 
-### 2. Run the Installation Script
-Execute the bundled deployment script located inside the `arch/` folder. The script safely:
-*   Backs up any conflicting active configurations to `~/config-backup` (if you choose `y`).
-*   Generates clean symlinks using GNU Stow from `~/dotfiles/arch/...` into your system's `~/.config/` directory.
+### 2. Deployment Options
+
+#### Option A: OS-Independent Config Deployer (Any Linux / macOS)
+If you already have your tools installed or are on a non-Arch distro (Ubuntu, Debian, Fedora, Alpine, macOS) and just want to safely link all configurations with automated safety backups:
+
+```bash
+chmod +x link-configs.sh
+
+# Preview actions safely (dry-run)
+./link-configs.sh --dry-run
+
+# Deploy symlinks directly
+./link-configs.sh
+```
+
+#### Option B: Full Arch Linux Installer
+If you are setting up a fresh Arch Linux system and need packages, yay, Oh My Zsh, and full system prerequisites installed automatically:
 
 ```bash
 chmod +x arch/install.sh
 ./arch/install.sh
 ```
+
+The installer automatically backs up conflicting active configurations to `~/config-backup-<timestamp>` before deploying links.
 
 ## Features & Automation Scripts
 
