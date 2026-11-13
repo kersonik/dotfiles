@@ -49,7 +49,7 @@ Configurations are cleanly organized by package inside the `arch/` directory. Th
 ### 1. Clone the Repository
 Clone the repository straight into your home directory:
 ```bash
-git clone [https://github.com/kersonik/dotfiles.git](https://github.com/kersonik/dotfiles.git) ~/dotfiles
+git clone git@github.com:kersonik/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ```
 
